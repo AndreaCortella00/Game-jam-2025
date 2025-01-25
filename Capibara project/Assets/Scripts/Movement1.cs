@@ -1,8 +1,6 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
-public class Movement : MonoBehaviour
+public class Movement1 : MonoBehaviour
 {
     public float maxSpeed = 5f;            // Velocità massima
     public float acceleration = 2f;        // Accelerazione per simulare il movimento subacqueo
@@ -12,14 +10,16 @@ public class Movement : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
 
+    public float stopThreshold = 0.1f;    // Soglia per considerare la velocità orizzontale come zero
 
-    void start()
+    void Start()
     {
+        // Inizializziamo i componenti
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
+
     void Update()
     {
         // Input per il movimento orizzontale (sinistra/destra)
@@ -43,8 +43,15 @@ public class Movement : MonoBehaviour
         }
 
         // Muoviamo il minisottomarino con la velocità corrente
-        transform.position += (Vector3)currentVelocity * Time.deltaTime;
-        animator.SetFloat("xVelocity", Mathf.Abs(moveHorizontal));
+        rb.linearVelocity = currentVelocity; // Usa la fisica di Unity per il movimento
+
+        // Controlliamo se la velocità orizzontale è inferiore alla soglia di stop
+        float xVelocity = Mathf.Abs(rb.linearVelocity.x) < stopThreshold ? 0f : Mathf.Clamp(rb.linearVelocity.x / maxSpeed, -1f, 1f);
+
+        // Passa il valore normalizzato all'animatore
+        animator.SetFloat("xVelocity", xVelocity);  // Usa la velocità orizzontale normalizzata
+
+        // Inverti l'immagine in base alla direzione orizzontale
         spriteRenderer.flipX = rb.linearVelocity.x < 0f;
     }
 }
