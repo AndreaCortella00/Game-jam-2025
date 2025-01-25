@@ -11,6 +11,7 @@ public class Movement1 : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+    public HealthSystem healthSystem;
 
     void Start()
     {
@@ -57,4 +58,19 @@ public class Movement1 : MonoBehaviour
             spriteRenderer.flipX = false; // Flip a destra
         }
     }
-}
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            healthSystem.TakeDamage(10f);  // Riduce la salute di 10 quando colpisce un nemico
+        }
+        else
+        {
+            if (collision.gameObject.CompareTag("Heal"))
+            {
+                healthSystem.Heal(10f);  // Riduce la salute di 10 quando colpisce un nemico
+            }
+        }
+    }
+    
+    }
