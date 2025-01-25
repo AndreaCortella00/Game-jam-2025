@@ -11,7 +11,9 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+ 
 
+    
 
     void start()
     {

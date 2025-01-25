@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9b5c089a10399a6448d082f283b88c28
+guid: 0c295fe1795c55d46ab8a3d4998365da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8493556518267342893
-    second: bolla_0
+      213: 8174729477718031675
+    second: Border health bar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bolla_0
+      name: Border health bar_0
       rect:
         serializedVersion: 2
-        x: 79
-        y: 87
-        width: 248
-        height: 240
+        x: 22
+        y: 84
+        width: 683
+        height: 182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3dfa8f0f853d02a80800000000000000
-      internalID: -8493556518267342893
+      spriteID: b3d3c4ef529727170800000000000000
+      internalID: 8174729477718031675
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      bolla_0: -8493556518267342893
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
