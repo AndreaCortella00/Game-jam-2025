@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Movement1 : MonoBehaviour
 {
@@ -10,11 +12,8 @@ public class Movement1 : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
 
-    public float stopThreshold = 0.1f;    // Soglia per considerare la velocità orizzontale come zero
-
     void Start()
     {
-        // Inizializziamo i componenti
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,15 +42,19 @@ public class Movement1 : MonoBehaviour
         }
 
         // Muoviamo il minisottomarino con la velocità corrente
-        rb.linearVelocity = currentVelocity; // Usa la fisica di Unity per il movimento
+        transform.position += (Vector3)currentVelocity * Time.deltaTime;
 
-        // Controlliamo se la velocità orizzontale è inferiore alla soglia di stop
-        float xVelocity = Mathf.Abs(rb.linearVelocity.x) < stopThreshold ? 0f : Mathf.Clamp(rb.linearVelocity.x / maxSpeed, -1f, 1f);
+        // Impostiamo l'animazione orizzontale
+        animator.SetFloat("xVelocity", Mathf.Abs(moveHorizontal));
 
-        // Passa il valore normalizzato all'animatore
-        animator.SetFloat("xVelocity", xVelocity);  // Usa la velocità orizzontale normalizzata
-
-        // Inverti l'immagine in base alla direzione orizzontale
-        spriteRenderer.flipX = rb.linearVelocity.x < 0f;
+        // Flippiamo lo sprite in base alla direzione del movimento orizzontale
+        if (moveHorizontal < 0f)
+        {
+            spriteRenderer.flipX = true;  // Flip a sinistra
+        }
+        else if (moveHorizontal > 0f)
+        {
+            spriteRenderer.flipX = false; // Flip a destra
+        }
     }
 }
