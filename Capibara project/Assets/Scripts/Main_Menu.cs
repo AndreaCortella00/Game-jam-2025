@@ -3,9 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Main_Menu : MonoBehaviour
+
 {
-    public void Playgame()
+    // Funzione per il bottone "Play"
+    public void OnPlayButtonClick()
     {
-        SceneManager.LoadSceneAsync(1);
+        Debug.Log("Play button clicked!");
+        // Esempio: Carica una scena chiamata "GameScene"
+        SceneManager.LoadScene("SampleSceneq");
+    }
+
+    // Funzione per il bottone "Exit"
+    public void OnExitButtonClick()
+    {
+        Debug.Log("Exit button clicked!");
+
+#if UNITY_EDITOR
+        // Se siamo nell'editor, ferma la simulazione
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Se siamo in una build reale, chiudi l'applicazione
+        Application.Quit();
+#endif
     }
 }
