@@ -10,7 +10,7 @@ public class Main_Menu : MonoBehaviour
     {
         Debug.Log("Play button clicked!");
         // Esempio: Carica una scena chiamata "GameScene"
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("ClipGioco");
     }
 
     // Funzione per il bottone "Exit"
@@ -25,5 +25,11 @@ public class Main_Menu : MonoBehaviour
         // Se siamo in una build reale, chiudi l'applicazione
         Application.Quit();
 #endif
+    }
+    public void OnCreditsButtonClick()
+    {
+        Debug.Log("Play button clicked!");
+        // Esempio: Carica una scena chiamata "GameScene"
+        SceneManager.LoadScene("Credits");
     }
 }
