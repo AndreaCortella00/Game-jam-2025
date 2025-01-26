@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
@@ -71,6 +72,9 @@ public class HealthSystem : MonoBehaviour
         {
             Instantiate(deathEffect, transform.position, Quaternion.identity);  // Aggiungi effetto morte (opzionale)
         }
-        Destroy(gameObject); // Rimuoviamo il personaggio dalla scena (opzionale)
+        //Destroy(gameObject); // Rimuoviamo il personaggio dalla scena (opzionale)
+
+        // Assicurati che "LoseScene" sia il nome della tua scena di vittoria
+        SceneManager.LoadScene("LoseScene");
     }
 }

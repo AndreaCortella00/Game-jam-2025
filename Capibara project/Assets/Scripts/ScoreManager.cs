@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;  // Aggiungi questo namespace per la gestione delle scene
 
 public class ScoreManager : MonoBehaviour
 {
@@ -27,12 +28,23 @@ public class ScoreManager : MonoBehaviour
         {
             scoreText.text = "Score: " + score.ToString();
         }
+        if (score >= 160)
+        {
+            LoadVictoryScene();
+        }
     }
 
     // Funzione per aggiungere punteggio
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;  // Aggiungiamo il punteggio al totale
+    }
+
+    // Funzione per caricare la scena di vittoria
+    void LoadVictoryScene()
+    {
+        // Assicurati che "VictoryScene" sia il nome della tua scena di vittoria
+        SceneManager.LoadScene("VictoryScene");
     }
 }
 
