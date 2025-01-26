@@ -10,7 +10,7 @@ public class Main_Menu : MonoBehaviour
     {
         Debug.Log("Play button clicked!");
         // Esempio: Carica una scena chiamata "GameScene"
-        SceneManager.LoadScene("SampleSceneq");
+        SceneManager.LoadScene("SampleScene");
     }
 
     // Funzione per il bottone "Exit"
