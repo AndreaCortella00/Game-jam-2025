@@ -31,5 +31,11 @@ public class Main_Menu : MonoBehaviour
         Debug.Log("Play button clicked!");
         // Esempio: Carica una scena chiamata "GameScene"
         SceneManager.LoadScene("Credits");
+    }    
+    public void OnMainmenu()
+    {
+        Debug.Log("Play button clicked!");
+        // Esempio: Carica una scena chiamata "GameScene"
+        SceneManager.LoadScene("Main_Menu");
     }
 }
